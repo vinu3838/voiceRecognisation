@@ -34,9 +34,10 @@
             document.getElementById("myImg").src = "voiceImagePressed.png";
             recognition.start();
             recognition.onresult = function (e) {
-                document.getElementById('transcript').textContent += e.results[0][0].transcript;
+                document.getElementById('transcript').textContent += " "+ e.results[0][0].transcript;
+                recognition.start();
             };
-        recognition.addEventListener('soundstart', recognition.start);
+      //  recognition.addEventListener('soundstart', recognition.start);
 
             recognition.onerror = function (e) {
                 recognition.stop();
