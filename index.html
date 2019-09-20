@@ -44,10 +44,10 @@
             //     recognition.stop();
             //     recognition.start();
             // })
-      //  recognition.addEventListener('end', recognition.start);
+       recognition.addEventListener('end', recognition.start);
 
             recognition.onerror = function (e) {
-                recognition.stop();
+                recognition.abort();
             }
             
         }
