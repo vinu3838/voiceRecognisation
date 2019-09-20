@@ -37,7 +37,7 @@
             recognition.start();
             recognition.onresult = function (e) {
                 document.getElementById('transcript').textContent += " " + e.results[0][0].transcript;
-               // recognition.stop();
+               console.log(this);
                 this.start();
             };
             // recognition.addEventListener('result',(e)=> {
@@ -64,7 +64,7 @@
             
         }
         toggle = !toggle;
-        console.log(toggle)
+        
 
 
     }
