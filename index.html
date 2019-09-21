@@ -18,7 +18,7 @@
         <div class="col-1  mt-4 mb-4">
             <img id="myImg" onclick="startDictation()" class="m-4" style=" margin: 0 auto;width:50px; height:50px;" src="voiceImage.jpg"
             />
-            <img id="myImg" onclick="stopDictation()" class="m-4" style=" margin: 0 auto;width:50px; height:50px;" src="voiceImage.jpg"
+            <img id="myImg2" onclick="stopDictation()" class="m-4" style=" margin: 0 auto;width:50px; height:50px;" src="voiceImage.jpg"
             />
         </div>
     </div>
@@ -33,27 +33,27 @@
 
 
     function startDictation() {
-        toggle=true
+        toggle = true
         if (toggle) {
 
             document.getElementById("myImg").src = "voiceImagePressed.png";
             recognition.start();
             recognition.onresult = function (e) {
                 document.getElementById('transcript').textContent += " " + e.results[0][0].transcript;
-            //    console.log(this);
-            //     this.start();
+                //    console.log(this);
+                //     this.start();
             };
             // recognition.addEventListener('result',(e)=> {
             //     document.getElementById('transcript').textContent += " "+ e.results[0][0].transcript;
             //     recognition.stop();
             //     recognition.start();
             // })
-           // recognition.addEventListener('end', recognition.start);
-           recognition.onend= function(e){
-               if(toggle){
-                recognition.start();
-               }
-           };
+            // recognition.addEventListener('end', recognition.start);
+            recognition.onend = function (e) {
+                if (toggle) {
+                    recognition.start();
+                }
+            };
 
             recognition.onerror = function (e) {
                 recognition.stop();
@@ -64,19 +64,19 @@
         else {
 
             document.getElementById("myImg").src = "voiceImage.jpg ";
-            
+
             recognition = '';
-                recognition = new webkitSpeechRecognition();
-                recognition.lang = "en-US";
-            
+            recognition = new webkitSpeechRecognition();
+            recognition.lang = "en-US";
+
         }
-       
+
         console.log(toggle)
 
 
     }
 
-    function startDictation() {
+    function stopDictation() {
         toggle = false;
     }
 
