@@ -40,16 +40,9 @@
             document.getElementById("myImg2").style.display = "inline-block";
             recognition.start();
             recognition.onresult = function (e) {
-                document.getElementById('transcript').textContent += " " + e.results[0][0].transcript;
-                //    console.log(this);
-                //     this.start();
+                document.getElementById('transcript').textContent = " " + e.results[0][0].transcript;
             };
-            // recognition.addEventListener('result',(e)=> {
-            //     document.getElementById('transcript').textContent += " "+ e.results[0][0].transcript;
-            //     recognition.stop();
-            //     recognition.start();
-            // })
-            // recognition.addEventListener('end', recognition.start);
+          
             recognition.onend = function (e) {
                 if (toggle) {
                     recognition.start();
