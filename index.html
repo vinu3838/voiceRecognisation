@@ -11,7 +11,7 @@
 </head>
 
 <body style="background:rgb(214, 9, 197);   margin: 0; height: 100%;">
-    <div class="row" id="voiceSearch">
+    <div class="row" id="voiceSearch" style="display:flex;">
         <div class="col-6 p-4 m-4" style="width:800px; background:yellow; border-radius:10px;">
             <p id="transcript"></p>
         </div>
@@ -25,7 +25,7 @@
 
 
     <div id="mail" class="row m-1 p-2" style="display:none;">
-        <div class="p-2 m-2 col-md-6 col-12">
+        <div class="p-2 m-2 col-sm-6 col-8">
             <button class="btn btn-primary m-2">Back</button>
             <form style="background:black;border-radius:10px;color:white" class="m-2 p-2">
                 <div class="form-group">
@@ -38,7 +38,10 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-        </div>
+        </div style="display:inline-block;">
+                <img id="myImg3" onclick="startDictation1()" class="m-4" style=" margin: 0 auto;width:50px; height:50px;" src="voiceImage.jpg"/>
+                <img id="myImg4" onclick="stopDictation1()" class="m-4" style=" margin: 0 auto;width:50px; height:50px; display:none;" src="voiceImagePressed.png"/>
+           
     </div>
 
 </body>
@@ -49,21 +52,26 @@
     recognition.continuous = false;
     recognition.lang = "en-US";
 
+
+    var toggle1 = true;
+    var recognition1 = new webkitSpeechRecognition();
+    recognition1.interimResults = false;
+    recognition1.continuous = false;
+    recognition1.lang = "en-US";
+
     function startDictation() {
         toggle = true
         if (toggle) {
-
             document.getElementById("myImg").style.display = "none";
             document.getElementById("myImg2").style.display = "inline-block";
             recognition.start();
-
             recognition.onresult = function (e) {
                 let sentence = e.results[0][0].transcript.toString();
                 document.getElementById('transcript').textContent = " " + sentence;
                 if (sentence.toLowerCase().includes("mail")) {
                     toggle = false;
                     document.getElementById('voiceSearch').style.display="none";
-                    document.getElementById('mail').style.display="block";
+                    document.getElementById('mail').style.display="flex";
                 }
             };
 
@@ -72,7 +80,6 @@
                     recognition.start();
                 }
             };
-
             recognition.onerror = function (e) {
                 recognition.stop();
             }
@@ -84,11 +91,49 @@
 
     }
 
+
+  function startDictation1() {
+        toggle1 = true
+        if (toggle1) {
+            document.getElementById("myImg3").style.display = "none";
+            document.getElementById("myImg4").style.display = "inline-block";
+            recognition1.start();
+            recognition1.onresult = function (e) {
+                let sentence = e.results[0][0].transcript.toString();
+                document.getElementById('exampleFormControlTextarea1').value += " " + sentence;
+            };
+
+            recognition1.onend = function (e) {
+                if (toggle1) {
+                    recognition1.start();
+                }
+            };
+            recognition1.onerror = function (e) {
+                recognition1.stop();
+            }
+
+        }
+
+        console.log(toggle1)
+
+
+    }
+
+
     function stopDictation() {
         document.getElementById("myImg2").style.display = "none";
         document.getElementById("myImg").style.display = "inline-block";
         toggle = false;
+        
     }
+
+      function stopDictation1() {
+        document.getElementById("myImg4").style.display = "none";
+        document.getElementById("myImg3").style.display = "inline-block";
+        toggle1 = false;
+        
+    }
+
 
 </script>
 
