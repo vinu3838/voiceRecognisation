@@ -71,6 +71,7 @@
                 if (sentence.toLowerCase().includes("mail")) {
                     toggle = false;
                     document.getElementById("myImg").style.display = "inline-block";
+                    document.getElementById("myImg2").style.display = "none";
                     document.getElementById('voiceSearch').style.display="none";
                     document.getElementById('mail').style.display="flex";
                 }
@@ -138,6 +139,7 @@
     function stopMailing(){
         toggle1 = false;
         document.getElementById("myImg3").style.display = "inline-block";
+        document.getElementById("myImg4").style.display = "none";
         document.getElementById('voiceSearch').style.display="flex";
         document.getElementById('mail').style.display="none";
     }
