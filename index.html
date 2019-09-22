@@ -26,7 +26,7 @@
 
     <div id="mail" class="row m-1 p-2" style="display:none;">
         <div class="p-2 m-2 col-sm-6 col-8">
-            <button class="btn btn-primary m-2">Back</button>
+            <button class="btn btn-primary m-2" onclick="stopMailing()" >Back</button>
             <form style="background:black;border-radius:10px;color:white" class="m-2 p-2">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email To</label>
@@ -56,7 +56,7 @@
     var toggle1 = true;
     var recognition1 = new webkitSpeechRecognition();
     recognition1.interimResults = false;
-    recognition1.continuous = false;
+    recognition1.continuous = true;
     recognition1.lang = "en-US";
 
     function startDictation() {
@@ -132,6 +132,12 @@
         document.getElementById("myImg3").style.display = "inline-block";
         toggle1 = false;
         
+    }
+
+    function stopMailing(){
+        toggle1 = false;
+        document.getElementById('voiceSearch').style.display="flex";
+        document.getElementById('mail').style.display="none";
     }
 
 
