@@ -49,14 +49,14 @@
     var toggle = true;
     var recognition = new webkitSpeechRecognition();
     recognition.interimResults = false;
-    recognition.continuous = true;
+    recognition.continuous = false;
     recognition.lang = "en-US";
 
 
     var toggle1 = true;
     var recognition1 = new webkitSpeechRecognition();
     recognition1.interimResults = false;
-    recognition1.continuous = true;
+    recognition1.continuous = false;
     recognition1.lang = "en-US";
 
     function startDictation() {
@@ -70,6 +70,7 @@
                 document.getElementById('transcript').textContent = " " + sentence;
                 if (sentence.toLowerCase().includes("mail")) {
                     toggle = false;
+                    document.getElementById("myImg").style.display = "inline-block";
                     document.getElementById('voiceSearch').style.display="none";
                     document.getElementById('mail').style.display="flex";
                 }
@@ -136,6 +137,7 @@
 
     function stopMailing(){
         toggle1 = false;
+        document.getElementById("myImg3").style.display = "inline-block";
         document.getElementById('voiceSearch').style.display="flex";
         document.getElementById('mail').style.display="none";
     }
